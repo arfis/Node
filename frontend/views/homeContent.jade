@@ -1,0 +1,28 @@
+extends index
+
+block content
+	div.container
+		center
+			div.jumbotron
+				h1 #{title}
+				h2 Restaurants you like!
+			
+		
+		div.form-group(ng-app="myHomeApp" ng-controller="homeController")
+			#{message}
+			{{rest}}
+			div.jumbotron
+				br
+				label(for="restaurant") Restaurant
+				input.form-control(type="text", ng-model="rest")
+					
+				button.btn.btn-info.center-block(type="button" ng-click="findRest()") Search
+			
+			
+		script.
+			var app = angular.module('myHomeApp', []);
+			app.controller('homeController', function($scope,$http) {
+			$scope.findRest = function(){
+				alert($scope.rest)
+			}
+			});

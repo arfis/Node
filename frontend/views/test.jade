@@ -1,5 +1,20 @@
-html
-  body
-    h1= message
-    br
-  h2= about
+extends index
+
+block scripts
+		script(src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js")
+block content
+	br
+	center
+		div(ng-app="myApp" ng-controller="myCtrl")
+			input(type="text", ng-model="firstName", title="First Name:") 
+			br
+			input(type="text", ng-model="lastName", title="Last Name: ")
+			br
+			{{firstName+ " " + lastName}} Full Name: 
+			
+	script.
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+		$scope.firstName = "John";
+		$scope.lastName = "Doe";
+		});

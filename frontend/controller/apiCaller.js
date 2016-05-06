@@ -8,6 +8,7 @@ var host = 'developers.zomato.com';
 var apiKey = 'c8c3348fe90d2d59d73cb8f4bde9c8f6';
 var apiHeader = "user-key";
 
+https.globalAgent.maxSockets = 100;
 function apiCaller(id){
     this.id = id;
 }
@@ -33,11 +34,11 @@ var performRequest = function (endpoint, data,reqCallback)
         var responseString = '';
 
         res.on('data', function(data) {
-            responseString += data;
-            console.info('GET result:\n');
-			console.info(data);
-			reqCallback(data);
-            console.info('\n\nCall completed');
+          responseString += data;
+          console.info('GET result:\n');
+					//console.info(data);
+					reqCallback(data);
+          console.info('\n\nCall completed');
         });
 		
 		res.on('success', function(data) {
